@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — I Create Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+
+<!-- Loader -->
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <div class="loader-line"></div>
+    <p class="loader-text">Loading Story<span class="loader-dots">...</span></p>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav-logo">Portfolio</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#journey">Journey</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" class="mobile-nav-link">About</a>
+  <a href="#journey" class="mobile-nav-link">Journey</a>
+  <a href="#projects" class="mobile-nav-link">Projects</a>
+  <a href="#skills" class="mobile-nav-link">Skills</a>
+  <a href="#contact" class="mobile-nav-link">Contact</a>
+</div>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero" id="hero">
+  <canvas id="particleCanvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-badge reveal-up">Available for Opportunities</div>
+    <h1 class="hero-name reveal-up">
+      <span class="name-line" data-text="Your Name">Your Name</span>
+    </h1>
+    <div class="hero-tagline reveal-up">
+      <span class="tagline-static">I don't just do work,</span>
+      <span class="tagline-animated">
+        <span class="word active">I create solutions.</span>
+        <span class="word">I build systems.</span>
+        <span class="word">I automate futures.</span>
+      </span>
+    </div>
+    <p class="hero-sub reveal-up">Operations Specialist · Automation Builder · Problem Solver</p>
+    <a href="#about" class="hero-btn reveal-up">
+      <span>Start My Journey</span>
+      <div class="btn-glow"></div>
+    </a>
+  </div>
+  <div class="hero-scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ===== ABOUT SECTION ===== -->
+<section class="about" id="about">
+  <div class="section-container">
+    <div class="section-label">Chapter 01</div>
+    <h2 class="section-title split-text">Who I Am</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="about-intro">I'm a <span class="highlight">results-driven professional</span> who started from customer service and never stopped climbing. Every challenge was a lesson, every problem became a system I built to solve it.</p>
+        <p>From handling customer escalations to building automation workflows, from running webinars to designing analytics dashboards — I've been at the intersection of <span class="highlight">people, processes, and technology</span>.</p>
+        <p>My superpower? Seeing inefficiency and engineering a smarter way forward.</p>
+        <div class="about-stats">
+          <div class="stat-item">
+            <span class="stat-num" data-target="5">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Years Journey</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="10">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Projects Built</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="100">0</span><span class="stat-suffix">%</span>
+            <span class="stat-label">Problem Solver</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-card glass">
+          <div class="about-avatar">
+            <div class="avatar-ring"></div>
+            <div class="avatar-inner">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="35" r="18" fill="url(#avatarGrad)"/>
+                <ellipse cx="50" cy="80" rx="28" ry="22" fill="url(#avatarGrad)"/>
+                <defs>
+                  <linearGradient id="avatarGrad" x1="0" y1="0" x2="100" y2="100">
+                    <stop offset="0%" stop-color="#00f5a0"/>
+                    <stop offset="100%" stop-color="#00d9f5"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </div>
+          <div class="skill-tags">
+            <span class="tag">Operations</span>
+            <span class="tag">Automation</span>
+            <span class="tag">Analytics</span>
+            <span class="tag">Excel</span>
+            <span class="tag">Problem Solving</span>
+            <span class="tag">Project Mgmt</span>
+            <span class="tag">Content Creation</span>
+            <span class="tag">User Engagement</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== JOURNEY SECTION ===== -->
+<section class="journey" id="journey">
+  <div class="section-container">
+    <div class="section-label">Chapter 02</div>
+    <h2 class="section-title">My Journey</h2>
+    <p class="section-sub">Every step shaped the builder I've become.</p>
+    <div class="timeline">
+      <div class="timeline-line">
+        <div class="timeline-progress" id="timelineProgress"></div>
+      </div>
+
+      <div class="timeline-item" data-side="left">
+        <div class="timeline-dot">
+          <div class="dot-pulse"></div>
+          <span>01</span>
+        </div>
+        <div class="timeline-card glass">
+          <div class="timeline-icon">📞</div>
+          <h3>Customer Service Executive</h3>
+          <div class="timeline-tag">The Foundation</div>
+          <p>Where it all began. Mastered communication, conflict resolution, and understanding what people truly need. Every call was a lesson in human psychology and patience.</p>
+          <div class="timeline-skills">
+            <span>Communication</span><span>CRM</span><span>Problem Solving</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-side="right">
+        <div class="timeline-dot">
+          <div class="dot-pulse"></div>
+          <span>02</span>
+        </div>
+        <div class="timeline-card glass">
+          <div class="timeline-icon">⚙️</div>
+          <h3>Operations & Technical Role</h3>
+          <div class="timeline-tag">Going Deeper</div>
+          <p>Moved from the front line to behind the scenes. Learned how systems work, identified process gaps, and started thinking like an engineer — not just a support agent.</p>
+          <div class="timeline-skills">
+            <span>Operations</span><span>Technical Support</span><span>Process Design</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-side="left">
+        <div class="timeline-dot">
+          <div class="dot-pulse"></div>
+          <span>03</span>
+        </div>
+        <div class="timeline-card glass">
+          <div class="timeline-icon">🧪</div>
+          <h3>App Testing & Issue Solving</h3>
+          <div class="timeline-tag">Debugging Reality</div>
+          <p>Tested apps, documented bugs, designed edge case scenarios. Trained my mind to think about what breaks before it breaks — a mindset that shapes everything I build.</p>
+          <div class="timeline-skills">
+            <span>QA Testing</span><span>Documentation</span><span>Critical Thinking</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-side="right">
+        <div class="timeline-dot">
+          <div class="dot-pulse"></div>
+          <span>04</span>
+        </div>
+        <div class="timeline-card glass">
+          <div class="timeline-icon">🎙️</div>
+          <h3>Webinar & User Engagement</h3>
+          <div class="timeline-tag">Scaling People</div>
+          <p>Managed large-scale webinar operations, coordinated hundreds of participants, tracked engagement metrics, and turned events into data-driven experiences.</p>
+          <div class="timeline-skills">
+            <span>Zoom</span><span>Engagement</span><span>Event Ops</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-side="left">
+        <div class="timeline-dot">
+          <div class="dot-pulse"></div>
+          <span>05</span>
+        </div>
+        <div class="timeline-card glass">
+          <div class="timeline-icon">📊</div>
+          <h3>Analytics & Business Intelligence</h3>
+          <div class="timeline-tag">Data Awakening</div>
+          <p>Discovered the power of data storytelling. Built dashboards, ran analyses, and learned to turn numbers into decisions that actually move the needle.</p>
+          <div class="timeline-skills">
+            <span>Excel</span><span>Power BI</span><span>Analytics</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-side="right">
+        <div class="timeline-dot">
+          <div class="dot-pulse"></div>
+          <span>06</span>
+        </div>
+        <div class="timeline-card glass">
+          <div class="timeline-icon">🚀</div>
+          <h3>Project Builder & Problem Solver</h3>
+          <div class="timeline-tag">The Builder Era</div>
+          <p>Now I don't just solve problems — I build systems that prevent them. Automation tools, AI integrations, tracking platforms, and productivity frameworks. This is where I live.</p>
+          <div class="timeline-skills">
+            <span>Automation</span><span>AI Tools</span><span>Systems Design</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS SECTION ===== -->
+<section class="projects" id="projects">
+  <div class="section-container">
+    <div class="section-label">Chapter 03</div>
+    <h2 class="section-title">Projects Built</h2>
+    <p class="section-sub">Not assigned. Imagined, designed, and executed.</p>
+    <div class="projects-grid">
+
+      <div class="project-card glass" data-project="0">
+        <div class="project-glow"></div>
+        <div class="project-header">
+          <span class="project-num">01</span>
+          <div class="project-icon">📊</div>
+        </div>
+        <h3>OneAndro Webinar Tracking System</h3>
+        <p>End-to-end system to track webinar attendance, engagement scores, and follow-up actions across hundreds of sessions.</p>
+        <div class="project-tags">
+          <span>Excel</span><span>Automation</span><span>Analytics</span>
+        </div>
+        <div class="project-arrow">→</div>
+      </div>
+
+      <div class="project-card glass" data-project="1">
+        <div class="project-glow"></div>
+        <div class="project-header">
+          <span class="project-num">02</span>
+          <div class="project-icon">✅</div>
+        </div>
+        <h3>Soft Code Attendance Tracking</h3>
+        <p>Conceptualized a smart attendance system that auto-flags anomalies, reduces manual errors, and generates weekly summaries.</p>
+        <div class="project-tags">
+          <span>System Design</span><span>Automation</span>
+        </div>
+        <div class="project-arrow">→</div>
+      </div>
+
+      <div class="project-card glass" data-project="2">
+        <div class="project-glow"></div>
+        <div class="project-header">
+          <span class="project-num">03</span>
+          <div class="project-icon">📹</div>
+        </div>
+        <h3>Zoom Tracking Automation</h3>
+        <p>Built automation idea to extract Zoom participation data, track latecomers, and auto-generate attendance reports.</p>
+        <div class="project-tags">
+          <span>Zoom API</span><span>Automation</span><span>Reporting</span>
+        </div>
+        <div class="project-arrow">→</div>
+      </div>
+
+      <div class="project-card glass" data-project="3">
+        <div class="project-glow"></div>
+        <div class="project-header">
+          <span class="project-num">04</span>
+          <div class="project-icon">📧</div>
+        </div>
+        <h3>Email Engagement System</h3>
+        <p>Designed a tracking and scoring system for email campaigns — measuring open rates, click-throughs, and user intent signals.</p>
+        <div class="project-tags">
+          <span>Email Ops</span><span>Analytics</span><span>CRM</span>
+        </div>
+        <div class="project-arrow">→</div>
+      </div>
+
+      <div class="project-card glass featured" data-project="4">
+        <div class="project-glow"></div>
+        <div class="project-badge">Featured</div>
+        <div class="project-header">
+          <span class="project-num">05</span>
+          <div class="project-icon">🤖</div>
+        </div>
+        <h3>AI Receptionist System</h3>
+        <p>Built an AI-powered receptionist concept that handles initial queries, routes to right departments, and logs every interaction automatically.</p>
+        <div class="project-tags">
+          <span>AI</span><span>Automation</span><span>System Design</span>
+        </div>
+        <div class="project-arrow">→</div>
+      </div>
+
+      <div class="project-card glass" data-project="5">
+        <div class="project-glow"></div>
+        <div class="project-header">
+          <span class="project-num">06</span>
+          <div class="project-icon">📈</div>
+        </div>
+        <h3>Data Analytics Dashboards</h3>
+        <p>Created business intelligence dashboards for operations teams — tracking KPIs, performance trends, and actionable insights.</p>
+        <div class="project-tags">
+          <span>Power BI</span><span>Excel</span><span>BI</span>
+        </div>
+        <div class="project-arrow">→</div>
+      </div>
+
+      <div class="project-card glass" data-project="6">
+        <div class="project-glow"></div>
+        <div class="project-header">
+          <span class="project-num">07</span>
+          <div class="project-icon">⚡</div>
+        </div>
+        <h3>Automation Projects Suite</h3>
+        <p>A collection of workflow automations that saved hours of manual work — from data entry bots to notification systems and report schedulers.</p>
+        <div class="project-tags">
+          <span>Automation</span><span>Workflows</span><span>Productivity</span>
+        </div>
+        <div class="project-arrow">→</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Project Modal -->
+<div class="project-modal" id="projectModal">
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <div class="modal-content glass" id="modalContent">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ===== SKILLS SECTION ===== -->
+<section class="skills" id="skills">
+  <div class="section-container">
+    <div class="section-label">Chapter 04</div>
+    <h2 class="section-title">Skills & Arsenal</h2>
+    <p class="section-sub">Tools I've mastered, concepts I've internalized.</p>
+
+    <div class="skills-layout">
+      <div class="skills-bars">
+        <h3 class="skills-category">Technical Skills</h3>
+        <div class="skill-bar-item" data-percent="90">
+          <div class="skill-bar-header">
+            <span>Microsoft Excel & Sheets</span>
+            <span class="skill-percent">90%</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" style="--target: 90%"></div>
+          </div>
+        </div>
+        <div class="skill-bar-item" data-percent="82">
+          <div class="skill-bar-header">
+            <span>Data Analytics & BI</span>
+            <span class="skill-percent">82%</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" style="--target: 82%"></div>
+          </div>
+        </div>
+        <div class="skill-bar-item" data-percent="85">
+          <div class="skill-bar-header">
+            <span>Process Automation</span>
+            <span class="skill-percent">85%</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" style="--target: 85%"></div>
+          </div>
+        </div>
+        <div class="skill-bar-item" data-percent="78">
+          <div class="skill-bar-header">
+            <span>Power BI / Dashboards</span>
+            <span class="skill-percent">78%</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" style="--target: 78%"></div>
+          </div>
+        </div>
+        <div class="skill-bar-item" data-percent="75">
+          <div class="skill-bar-header">
+            <span>AI Tools & Integration</span>
+            <span class="skill-percent">75%</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" style="--target: 75%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skills-orbs">
+        <h3 class="skills-category">Core Strengths</h3>
+        <div class="orbs-grid">
+          <div class="orb-item">
+            <div class="orb-ring"><div class="orb-inner" data-percent="95">
+              <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" class="orb-bg"/><circle cx="50" cy="50" r="42" class="orb-fill" style="--p:95"/></svg>
+              <span class="orb-val">95%</span>
+            </div></div>
+            <p>Operations</p>
+          </div>
+          <div class="orb-item">
+            <div class="orb-ring"><div class="orb-inner" data-percent="92">
+              <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" class="orb-bg"/><circle cx="50" cy="50" r="42" class="orb-fill" style="--p:92"/></svg>
+              <span class="orb-val">92%</span>
+            </div></div>
+            <p>Problem Solving</p>
+          </div>
+          <div class="orb-item">
+            <div class="orb-ring"><div class="orb-inner" data-percent="88">
+              <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" class="orb-bg"/><circle cx="50" cy="50" r="42" class="orb-fill" style="--p:88"/></svg>
+              <span class="orb-val">88%</span>
+            </div></div>
+            <p>Project Mgmt</p>
+          </div>
+          <div class="orb-item">
+            <div class="orb-ring"><div class="orb-inner" data-percent="85">
+              <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" class="orb-bg"/><circle cx="50" cy="50" r="42" class="orb-fill" style="--p:85"/></svg>
+              <span class="orb-val">85%</span>
+            </div></div>
+            <p>Content Creation</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section class="contact" id="contact">
+  <div class="section-container">
+    <div class="section-label">Chapter 05</div>
+    <h2 class="section-title">Let's Connect</h2>
+    <p class="section-sub">Have a problem? I'll build you a solution.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item glass">
+          <span class="contact-icon">📧</span>
+          <div>
+            <span class="contact-label">Email</span>
+            <a href="mailto:your@email.com" class="contact-value">your@email.com</a>
+          </div>
+        </div>
+        <div class="contact-item glass">
+          <span class="contact-icon">💼</span>
+          <div>
+            <span class="contact-label">LinkedIn</span>
+            <a href="#" class="contact-value">linkedin.com/in/yourprofile</a>
+          </div>
+        </div>
+        <div class="contact-item glass">
+          <span class="contact-icon">🐙</span>
+          <div>
+            <span class="contact-label">GitHub</span>
+            <a href="#" class="contact-value">github.com/yourusername</a>
+          </div>
+        </div>
+        <div class="contact-item glass">
+          <span class="contact-icon">📍</span>
+          <div>
+            <span class="contact-label">Location</span>
+            <span class="contact-value">India · Remote Ready</span>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form glass" id="contactForm">
+        <div class="form-group">
+          <input type="text" placeholder="Your Name" class="form-input" required>
+          <div class="form-line"></div>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Your Email" class="form-input" required>
+          <div class="form-line"></div>
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="Subject" class="form-input">
+          <div class="form-line"></div>
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Tell me about your problem..." class="form-input form-textarea" rows="4" required></textarea>
+          <div class="form-line"></div>
+        </div>
+        <button type="submit" class="submit-btn">
+          <span>Send Message</span>
+          <div class="btn-glow"></div>
+        </button>
+        <div class="form-success" id="formSuccess">Message sent! I'll reply soon ✓</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL SECTION ===== -->
+<section class="finale" id="finale">
+  <div class="finale-bg">
+    <div class="finale-orb finale-orb-1"></div>
+    <div class="finale-orb finale-orb-2"></div>
+  </div>
+  <div class="finale-content">
+    <div class="finale-line"></div>
+    <blockquote class="finale-quote">
+      <span class="q-line" data-delay="0">I started with calls,</span>
+      <span class="q-line" data-delay="0.3">but I didn't stop there.</span>
+      <span class="q-line q-highlight" data-delay="0.7">I started building solutions.</span>
+    </blockquote>
+    <p class="finale-sub">And I'm not done yet.</p>
+    <a href="#hero" class="back-top-btn glass">
+      <span>↑</span> Back to Top
+    </a>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
