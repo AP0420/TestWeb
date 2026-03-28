@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Aryan Parmar | AI Assistant Portfolio — The Architect</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>GTA VICE | Aryan Parmar — The Architect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Chakra+Petch:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -15,58 +13,393 @@
     }
 
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: radial-gradient(circle at 10% 20%, #0a0c1a, #03050b);
-      color: #ffffff;
+      background: #0a0c12;
+      font-family: 'Chakra Petch', monospace;
       overflow-x: hidden;
       cursor: none;
-      transition: background 0.3s ease;
+      color: #fff;
     }
 
-    /* improved readability — soft glow & high contrast */
-    .glass-card, .assistant-card, .project-card, .timeline-card {
-      background: rgba(15, 20, 35, 0.7);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(100, 200, 255, 0.25);
-      border-radius: 28px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(80, 180, 255, 0.1);
-      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    /* GTA VIBE — neon, glitch, street */
+    @keyframes neonPulse {
+      0% { text-shadow: 0 0 5px #ff00cc, 0 0 10px #ff00cc, 0 0 20px #ff00cc; }
+      100% { text-shadow: 0 0 10px #ff44ee, 0 0 20px #ff44ee, 0 0 30px #ff44ee; }
     }
 
-    .glass-card:hover, .project-card:hover {
-      transform: translateY(-8px) scale(1.01);
-      border-color: #3b82f6;
-      box-shadow: 0 30px 50px rgba(59, 130, 246, 0.2);
+    @keyframes glitch {
+      0% { transform: skew(0deg, 0deg); opacity: 1; }
+      95% { transform: skew(0deg, 0deg); opacity: 1; }
+      96% { transform: skew(2deg, 1deg); opacity: 0.9; }
+      97% { transform: skew(-2deg, -1deg); opacity: 0.95; }
+      100% { transform: skew(0deg, 0deg); opacity: 1; }
     }
 
-    /* cursor */
+    .gta-glitch {
+      animation: glitch 3s infinite;
+    }
+
+    /* custom cursor — weapon style */
     .cursor {
-      width: 10px;
-      height: 10px;
-      background: #3b82f6;
-      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      background: radial-gradient(circle, #ff3366, #ff00aa);
+      border-radius: 0;
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+      transform: rotate(45deg);
       position: fixed;
       pointer-events: none;
       z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: width 0.2s, height 0.2s;
-      mix-blend-mode: difference;
+      filter: drop-shadow(0 0 6px #ff0066);
+      transition: 0.05s linear;
     }
+
     .cursor-follower {
-      width: 38px;
-      height: 38px;
-      border: 1.5px solid #3b82f6;
+      width: 45px;
+      height: 45px;
+      border: 2px solid #ff44cc;
       border-radius: 50%;
       position: fixed;
       pointer-events: none;
       z-index: 9998;
       transform: translate(-50%, -50%);
-      transition: 0.1s ease;
-      backdrop-filter: blur(2px);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 0 15px #ff00aa;
+      transition: 0.1s;
     }
 
-    /* assistant bubble */
-    .assistant-container {
+    /* NAVIGATION — GTA STYLE */
+    .nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 18px 50px;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 2px solid #ff44cc;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Orbitron', monospace;
+      box-shadow: 0 0 20px rgba(255, 68, 204, 0.3);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ff3366, #ff00cc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 2px;
+      text-shadow: 0 0 5px #ff0066;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 2px;
+      transition: 0.2s;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover {
+      color: #ff44cc;
+      text-shadow: 0 0 8px #ff44cc;
+      transform: scale(1.05);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 28px;
+      height: 3px;
+      background: #ff44cc;
+      border-radius: 2px;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: #0a0a12;
+      border-left: 3px solid #ff44cc;
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      transition: 0.4s;
+      backdrop-filter: blur(20px);
+    }
+
+    .mobile-menu.open {
+      right: 0;
+    }
+
+    /* GTA BACKGROUND CANVAS (city vibes) */
+    #gtaCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .hero-content {
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(12px);
+      padding: 50px 40px;
+      border-radius: 40px;
+      border: 1px solid #ff44cc;
+      box-shadow: 0 0 60px rgba(255, 68, 204, 0.3);
+      max-width: 850px;
+      margin: 20px;
+      animation: riseUp 1s ease-out;
+    }
+
+    @keyframes riseUp {
+      from {
+        opacity: 0;
+        transform: translateY(60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .badge {
+      background: #ff44cc20;
+      border: 1px solid #ff44cc;
+      display: inline-block;
+      padding: 6px 20px;
+      border-radius: 40px;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      color: #ff99ff;
+    }
+
+    h1 {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(48px, 9vw, 110px);
+      font-weight: 900;
+      background: linear-gradient(135deg, #ff44cc, #ffaa33);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 20px #ff44aa;
+      margin-bottom: 20px;
+    }
+
+    .tagline {
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #ffdd99;
+    }
+
+    .highlight {
+      color: #ff44cc;
+      text-shadow: 0 0 5px #ff44cc;
+    }
+
+    .btn-gta {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 14px 42px;
+      background: linear-gradient(95deg, #ff3366, #ff00aa);
+      border: none;
+      border-radius: 60px;
+      font-weight: 800;
+      font-size: 18px;
+      text-transform: uppercase;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 15px #ff44cc;
+      text-decoration: none;
+    }
+
+    .btn-gta:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px #ff44cc;
+    }
+
+    /* sections */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 100px 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffaa44, #ff44aa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      border-left: 5px solid #ff44cc;
+      padding-left: 20px;
+    }
+
+    .section-sub {
+      font-size: 18px;
+      color: #ccc;
+      margin-bottom: 50px;
+    }
+
+    /* cards GTA */
+    .card-gta {
+      background: rgba(10, 12, 20, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid #ff44aa;
+      border-radius: 24px;
+      padding: 32px;
+      transition: 0.3s;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .card-gta:hover {
+      transform: translateY(-8px);
+      border-color: #ffaa33;
+      box-shadow: 0 20px 40px rgba(255, 68, 204, 0.3);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    .stat-number {
+      font-size: 48px;
+      font-weight: 800;
+      color: #ff44cc;
+      font-family: 'Orbitron';
+    }
+
+    /* timeline */
+    .timeline-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .timeline-item {
+      border-left: 4px solid #ff44cc;
+      padding: 20px 28px;
+      transition: 0.2s;
+    }
+
+    /* projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      cursor: pointer;
+    }
+
+    .project-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #ff44cc20;
+      border: 1px solid #ff44cc;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      margin: 5px 5px 0 0;
+    }
+
+    /* skills bar */
+    .skill-bar {
+      margin: 24px 0;
+    }
+    .skill-bar .bar-bg {
+      height: 8px;
+      background: #2a2a3a;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .skill-bar .bar-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #ff44cc, #ffaa33);
+      border-radius: 8px;
+      transition: width 1s ease;
+    }
+
+    /* MODAL GTA */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(20px);
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #0f0f1a;
+      border: 2px solid #ff44cc;
+      border-radius: 32px;
+      padding: 40px;
+      max-width: 550px;
+      width: 90%;
+      color: white;
+      box-shadow: 0 0 50px #ff44aa;
+    }
+
+    /* assistant GTA character */
+    .assistant {
       position: fixed;
       bottom: 30px;
       right: 30px;
@@ -76,618 +409,416 @@
       align-items: flex-end;
       gap: 12px;
     }
+
     .assistant-bubble {
-      background: linear-gradient(135deg, #1e2a5e, #0f172a);
-      backdrop-filter: blur(16px);
+      background: linear-gradient(145deg, #1a1128, #0a0518);
+      border: 1px solid #ff44cc;
       border-radius: 28px;
       padding: 14px 22px;
       max-width: 280px;
-      border: 1px solid rgba(59,130,246,0.5);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
       font-size: 14px;
-      line-height: 1.5;
-      transform-origin: bottom right;
-      animation: floatGlow 3s infinite alternate;
-    }
-    .assistant-avatar {
-      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-      width: 52px;
-      height: 52px;
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      cursor: pointer;
-      box-shadow: 0 0 20px rgba(59,130,246,0.5);
-      transition: 0.3s;
-    }
-    @keyframes floatGlow {
-      0% { transform: translateY(0px); box-shadow: 0 5px 15px rgba(59,130,246,0.2);}
-      100% { transform: translateY(-6px); box-shadow: 0 15px 30px rgba(59,130,246,0.4);}
-    }
-
-    /* nav */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 20px 50px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-      backdrop-filter: blur(20px);
-      background: rgba(5, 7, 18, 0.6);
-      border-bottom: 1px solid rgba(59,130,246,0.2);
-      transition: 0.3s;
-    }
-    .nav-logo {
-      font-size: 26px;
-      font-weight: 800;
-      background: linear-gradient(135deg, #fff, #60a5fa);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .nav-links { display: flex; gap: 40px; }
-    .nav-links a {
-      color: #ddd;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.3s;
-      letter-spacing: 1px;
-    }
-    .nav-links a:hover { color: #60a5fa; text-shadow: 0 0 5px #3b82f6; }
-    .mobile-menu { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-    .mobile-menu span { width: 28px; height: 2px; background: white; border-radius: 2px; }
-    .mobile-nav {
-      position: fixed; top: 0; right: -100%; width: 260px; height: 100vh;
-      background: rgba(0,0,0,0.95); backdrop-filter: blur(30px); z-index: 2001;
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      gap: 32px; transition: 0.4s;
-    }
-    .mobile-nav.open { right: 0; }
-
-    /* hero section */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    #canvas-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      max-width: 900px;
-      padding: 0 24px;
-      animation: riseUp 1s ease-out;
-    }
-    @keyframes riseUp {
-      from { opacity: 0; transform: translateY(60px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .hero-badge {
-      background: rgba(59,130,246,0.2);
-      border: 1px solid #3b82f6;
-      display: inline-block;
-      padding: 8px 24px;
-      border-radius: 60px;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 2px;
       backdrop-filter: blur(8px);
-      margin-bottom: 24px;
-    }
-    .hero h1 {
-      font-size: clamp(48px, 8vw, 96px);
-      font-weight: 800;
-      background: linear-gradient(135deg, #ffffff, #93c5fd, #3b82f6);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 24px;
-    }
-    .typewriter {
-      font-size: clamp(20px, 4vw, 32px);
-      font-weight: 600;
-      color: #cbd5e6;
-      margin-bottom: 20px;
-    }
-    .highlight-text {
-      background: linear-gradient(120deg, #3b82f6, #a855f7);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-weight: 700;
-    }
-    .hero-btn {
-      display: inline-block;
-      margin-top: 32px;
-      padding: 14px 38px;
-      background: linear-gradient(95deg, #3b82f6, #8b5cf6);
-      border-radius: 60px;
-      font-weight: 700;
-      text-decoration: none;
-      color: white;
-      box-shadow: 0 8px 20px rgba(59,130,246,0.4);
-      transition: 0.3s;
-    }
-    .hero-btn:hover { transform: scale(1.05); box-shadow: 0 15px 35px rgba(59,130,246,0.6); }
-
-    /* sections common */
-    .container {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 100px 40px;
-    }
-    .section-label {
-      font-size: 12px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #60a5fa;
-      margin-bottom: 12px;
-    }
-    .section-title {
-      font-size: clamp(32px, 5vw, 54px);
-      font-weight: 800;
-      margin-bottom: 16px;
-      background: linear-gradient(135deg, #fff, #a5f3fc);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .section-desc {
-      font-size: 18px;
-      color: #b9c7d9;
-      max-width: 700px;
-      margin-bottom: 60px;
-      line-height: 1.6;
-    }
-
-    /* grid layouts */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
-    }
-    .about-card {
-      padding: 32px;
-    }
-    .stats {
-      display: flex;
-      gap: 32px;
-      margin-top: 40px;
-    }
-    .stat-num {
-      font-size: 48px;
-      font-weight: 800;
-      color: #3b82f6;
-    }
-    .skill-tag {
-      background: rgba(59,130,246,0.2);
-      border-radius: 40px;
-      padding: 8px 18px;
-      display: inline-block;
-      margin: 6px;
-      font-size: 13px;
+      box-shadow: 0 0 20px rgba(255, 68, 204, 0.4);
       font-weight: 500;
-      backdrop-filter: blur(4px);
     }
 
-    /* timeline creative */
-    .timeline-grid {
+    .assistant-avatar {
+      width: 65px;
+      height: 65px;
+      background: radial-gradient(circle, #ff44cc, #aa22aa);
+      border-radius: 50%;
       display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
-    .timeline-item {
-      padding: 28px;
-      transition: 0.3s;
-      border-left: 4px solid #3b82f6;
-    }
-    .timeline-year {
-      font-size: 14px;
-      color: #60a5fa;
-      letter-spacing: 2px;
-    }
-
-    /* project cards */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 30px;
-    }
-    .project-card {
-      padding: 28px;
-      cursor: pointer;
-      transition: all 0.4s;
-    }
-    .project-icon {
-      font-size: 42px;
-      margin-bottom: 16px;
-    }
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 16px 0;
-    }
-    .project-tags span {
-      background: rgba(59,130,246,0.2);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 11px;
-    }
-
-    /* modal */
-    .modal {
-      position: fixed;
-      inset: 0;
-      z-index: 3000;
-      display: none;
       align-items: center;
       justify-content: center;
-      background: rgba(0,0,0,0.7);
-      backdrop-filter: blur(20px);
-    }
-    .modal.open { display: flex; }
-    .modal-content {
-      max-width: 550px;
-      background: #0f1222;
-      border-radius: 32px;
-      padding: 32px;
-      border: 1px solid #3b82f6;
-      animation: fadeUp 0.3s;
-    }
-    @keyframes fadeUp {
-      from { transform: scale(0.9); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+      font-size: 32px;
+      cursor: pointer;
+      border: 2px solid gold;
+      transition: 0.2s;
+      box-shadow: 0 0 20px #ff44aa;
     }
 
-    /* skills bar */
-    .skill-bar {
-      margin: 18px 0;
-    }
-    .skill-label {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-    .progress-bar {
-      height: 6px;
-      background: #2d3748;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .progress-fill {
-      width: 0%;
-      height: 100%;
-      background: linear-gradient(90deg, #3b82f6, #c084fc);
-      border-radius: 8px;
-      transition: width 1.2s ease;
+    .assistant-avatar:hover {
+      transform: scale(1.05);
     }
 
-    /* contact */
-    .contact-form input, .contact-form textarea {
+    /* form */
+    input, textarea {
       width: 100%;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid #2d3a5e;
+      background: #1e1e2c;
+      border: 1px solid #ff44aa;
       padding: 14px;
       border-radius: 20px;
       color: white;
       margin-bottom: 16px;
     }
+
     button {
-      background: linear-gradient(95deg, #3b82f6, #8b5cf6);
+      background: linear-gradient(95deg, #ff44cc, #ff2266);
       border: none;
       padding: 12px 28px;
       border-radius: 40px;
       font-weight: bold;
+      color: white;
       cursor: pointer;
-      transition: 0.3s;
     }
 
     @media (max-width: 800px) {
-      .nav-links { display: none; }
-      .mobile-menu { display: flex; }
-      .container { padding: 70px 24px; }
-      .grid-2 { grid-template-columns: 1fr; }
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .container {
+        padding: 70px 24px;
+      }
     }
+
     @media (max-width: 500px) {
-      body { cursor: auto; }
-      .cursor, .cursor-follower { display: none; }
+      body {
+        cursor: auto;
+      }
+      .cursor, .cursor-follower {
+        display: none;
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid #ff44cc;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
 
 <div class="cursor" id="cursor"></div>
-<div class="cursor-follower" id="follower"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
 
-<nav>
-  <div class="nav-logo">✦ ARYAN VERSE</div>
+<nav class="nav">
+  <div class="logo">✦ VICE ARCHITECT ✦</div>
   <div class="nav-links">
-    <a href="#home">Home</a><a href="#about">About</a><a href="#journey">Journey</a><a href="#projects">Work</a><a href="#skills">Skills</a><a href="#contact">Connect</a>
+    <a href="#home">HOME</a>
+    <a href="#about">STATS</a>
+    <a href="#journey">MISSIONS</a>
+    <a href="#projects">HEISTS</a>
+    <a href="#skills">SKILLS</a>
+    <a href="#contact">CONTACT</a>
   </div>
-  <div class="mobile-menu" id="mobileToggle"><span></span><span></span><span></span></div>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
-<div class="mobile-nav" id="mobileNav">
-  <a href="#home">Home</a><a href="#about">About</a><a href="#journey">Journey</a><a href="#projects">Work</a><a href="#skills">Skills</a><a href="#contact">Connect</a>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home">HOME</a>
+  <a href="#about">STATS</a>
+  <a href="#journey">MISSIONS</a>
+  <a href="#projects">HEISTS</a>
+  <a href="#skills">SKILLS</a>
+  <a href="#contact">CONTACT</a>
 </div>
 
-<!-- AI ASSISTANT -->
-<div class="assistant-container">
+<canvas id="gtaCanvas"></canvas>
+
+<!-- GTA Assistant -->
+<div class="assistant">
   <div class="assistant-bubble" id="assistantMsg">
-    🤖 Hey, I'm Echo — your digital guide. <span id="dynamicGreet">Let me introduce Aryan!</span>
+    💀 Yo! I'm Lazlow — your GTA guide. This is Aryan, the system architect. Wanna see some crazy automation?
   </div>
   <div class="assistant-avatar" id="assistantAvatar">
-    🧠
+    🎮
   </div>
 </div>
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 <section class="hero" id="home">
-  <canvas id="canvas-bg"></canvas>
   <div class="hero-content">
-    <div class="hero-badge">✦ AI-POWERED PORTFOLIO ✦</div>
-    <h1>Aryan Parmar</h1>
-    <div class="typewriter">
-      <span id="typedText"></span><span class="highlight-text" id="dynamicRole"></span>
-    </div>
-    <p style="font-size: 18px; max-width: 700px; margin: 0 auto; color: #cbd5e1;">Operations Architect · Automation Alchemist · System Builder</p>
-    <a href="#about" class="hero-btn">⟡ Meet the Architect ⟡</a>
+    <div class="badge">★ GRAND THEFT AUTOMATION ★</div>
+    <h1 class="gta-glitch">ARYAN PARMAR</h1>
+    <div class="tagline">"I don't just do work — <span class="highlight" id="dynamicWord">I execute heists on inefficiency.</span>"</div>
+    <p style="font-size: 18px; margin: 20px 0;">Operations Architect | Automation Legend | System Breaker & Builder</p>
+    <a href="#about" class="btn-gta">► ENTER THE UNDERGROUND ◄</a>
   </div>
 </section>
 
-<!-- ABOUT SECTION (improved contrast) -->
+<!-- ABOUT SECTION -->
 <section id="about" class="container">
-  <div class="section-label">// THE ORIGIN</div>
-  <div class="section-title">Beyond Support — Engineering Intelligence</div>
+  <div class="section-title">[ CRIMINAL STATS ]</div>
   <div class="grid-2">
-    <div class="glass-card about-card">
-      <p style="font-size: 18px; line-height: 1.7; color: #e2e8f0;">I started in customer service, but every call was a lesson in system failure. So I started building. Today, I architect automation ecosystems, AI-powered trackers, and data pipelines that turn operational chaos into seamless flow.</p>
-      <div class="stats">
-        <div><span class="stat-num">5+</span><br>Years Evolution</div>
-        <div><span class="stat-num">30+</span><br>Automations Built</div>
-        <div><span class="stat-num">100%</span><br>Problem Solver</div>
+    <div class="card-gta">
+      <p style="font-size: 18px; line-height: 1.6;">From customer service hustles to architecting full-scale automation empires — Aryan has infiltrated corporate chaos and turned it into lean, weaponized systems. His specialty: eliminating manual labor with AI-driven ops.</p>
+      <div style="display: flex; gap: 30px; margin-top: 40px;">
+        <div><span class="stat-number">5+</span><br>Years of Ops</div>
+        <div><span class="stat-number">30+</span><br>Automations Deployed</div>
+        <div><span class="stat-number">100%</span><br>Efficiency Rate</div>
       </div>
     </div>
-    <div class="glass-card about-card" style="text-align: center;">
-      <div style="font-size: 80px;">⚡🧠</div>
-      <div style="margin-top: 20px;">
-        <span class="skill-tag">Process Mining</span>
-        <span class="skill-tag">Zoom API</span>
-        <span class="skill-tag">Power BI</span>
-        <span class="skill-tag">AI Integration</span>
-        <span class="skill-tag">Excel Mastery</span>
-        <span class="skill-tag">System Architecture</span>
+    <div class="card-gta">
+      <div style="font-size: 70px; text-align: center;">🔫🧠</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; justify-content: center;">
+        <span class="tag">Process Hacker</span><span class="tag">Zoom API</span><span class="tag">Power BI</span><span class="tag">AI Integration</span><span class="tag">Excel Wizard</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- JOURNEY (timeline creative) -->
-<section id="journey" style="background: radial-gradient(ellipse at top, #0a0e1a, #020617);" class="container">
-  <div class="section-label">// THE PATH</div>
-  <div class="section-title">My Evolution Timeline</div>
+<!-- JOURNEY - MISSIONS -->
+<section id="journey" class="container" style="background: radial-gradient(circle at 20% 40%, #0b0712, #020108); border-radius: 40px;">
+  <div class="section-title">[ MISSION LOG ]</div>
   <div class="timeline-grid">
-    <div class="glass-card timeline-item"><div class="timeline-year">▶ 2019 — FOUNDATION</div><h3>Customer Service Executive</h3><p>Mastered empathy, conflict resolution & CRM. Understood where processes break.</p></div>
-    <div class="glass-card timeline-item"><div class="timeline-year">▶ 2021 — OPERATIONS CORE</div><h3>Technical Operations & Testing</h3><p>Moved behind the scenes, debugged workflows, designed SOPs, reduced ticket time by 40%.</p></div>
-    <div class="glass-card timeline-item"><div class="timeline-year">▶ 2022 — WEBINAR SCALING</div><h3>Engagement & Analytics Lead</h3><p>Managed 200+ webinars, built attendance trackers & automated follow-up sequences.</p></div>
-    <div class="glass-card timeline-item"><div class="timeline-year">▶ 2023 — DATA AWAKENING</div><h3>BI & Dashboard Architect</h3><p>Power BI dashboards, KPI frameworks, real-time ops visibility.</p></div>
-    <div class="glass-card timeline-item"><div class="timeline-year">▶ 2024+ — AUTOMATION ERA</div><h3>AI Systems & Workflow Engineer</h3><p>Zoom automation, AI receptionist concept, email scoring engines — building self-healing systems.</p></div>
+    <div class="card-gta timeline-item"><span style="color:#ff44cc;">▶ 2019 — ORIGINS</span><h3>Customer Support Operative</h3><p>Mastered human psychology, de-escalation, and identified weak points in corporate structures.</p></div>
+    <div class="card-gta timeline-item"><span style="color:#ff44cc;">▶ 2021 — OPERATIONS UNDERGROUND</span><h3>Technical Ops & Bug Hunter</h3><p>Hunted inefficiencies, built SOPs, reduced response time by 45%.</p></div>
+    <div class="card-gta timeline-item"><span style="color:#ff44cc;">▶ 2022 — WEBINAR KINGPIN</span><h3>Engagement Architect</h3><p>Managed 200+ live ops, built auto-trackers for attendance & follow-up.</p></div>
+    <div class="card-gta timeline-item"><span style="color:#ff44cc;">▶ 2023 — DATA HEIST</span><h3>BI & Intelligence</h3><p>Created dashboards that exposed hidden KPIs, giving real-time control.</p></div>
+    <div class="card-gta timeline-item"><span style="color:#ff44cc;">▶ 2024+ — AUTOMATION GODFATHER</span><h3>AI Systems & Self-Healing Workflows</h3><p>Zoom automation, AI receptionist, email scoring engines — total supremacy.</p></div>
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- PROJECTS (GTA style) -->
 <section id="projects" class="container">
-  <div class="section-label">// SIGNATURE BUILDS</div>
-  <div class="section-title">Projects That Reshape Workflows</div>
+  <div class="section-title">[ HEIST ARCHIVES ]</div>
   <div class="projects-grid" id="projectsGrid"></div>
 </section>
 
-<!-- MODAL -->
-<div class="modal" id="projectModal"><div class="modal-content" id="modalInner"><button style="float:right; background:none; border:none; font-size:24px; color:white;" id="closeModalBtn">✕</button><div id="modalBody"></div></div></div>
-
-<!-- SKILLS SECTION with readable bars -->
-<section id="skills" class="container" style="background: radial-gradient(circle at 20% 30%, #0b0f20, #010101);">
-  <div class="section-label">// TOOLKIT</div>
-  <div class="section-title">Technical Arsenal & Core Powers</div>
+<!-- SKILLS -->
+<section id="skills" class="container">
+  <div class="section-title">[ WEAPON SKILL TREE ]</div>
   <div class="grid-2">
-    <div class="glass-card" style="padding: 32px;">
-      <h3>📊 Automation & Data</h3>
-      <div class="skill-bar"><div class="skill-label"><span>Excel / Sheets</span><span>95%</span></div><div class="progress-bar"><div class="progress-fill" data-target="95"></div></div></div>
-      <div class="skill-bar"><div class="skill-label"><span>Power BI & Analytics</span><span>88%</span></div><div class="progress-bar"><div class="progress-fill" data-target="88"></div></div></div>
-      <div class="skill-bar"><div class="skill-label"><span>Process Automation</span><span>92%</span></div><div class="progress-bar"><div class="progress-fill" data-target="92"></div></div></div>
-      <div class="skill-bar"><div class="skill-label"><span>AI / LLM Integration</span><span>84%</span></div><div class="progress-bar"><div class="progress-fill" data-target="84"></div></div></div>
+    <div class="card-gta">
+      <h3>🔧 TECH SKILLS</h3>
+      <div class="skill-bar"><div>Excel / Sheets</div><div class="bar-bg"><div class="bar-fill" data-target="96"></div></div></div>
+      <div class="skill-bar"><div>Power BI & Analytics</div><div class="bar-bg"><div class="bar-fill" data-target="90"></div></div></div>
+      <div class="skill-bar"><div>Process Automation</div><div class="bar-bg"><div class="bar-fill" data-target="94"></div></div></div>
+      <div class="skill-bar"><div>AI / LLM Integration</div><div class="bar-bg"><div class="bar-fill" data-target="88"></div></div></div>
     </div>
-    <div class="glass-card" style="padding: 32px;">
-      <h3>✨ Core Strengths</h3>
-      <div class="skill-bar"><div class="skill-label"><span>Operations Design</span><span>96%</span></div><div class="progress-bar"><div class="progress-fill" data-target="96"></div></div></div>
-      <div class="skill-bar"><div class="skill-label"><span>Problem Solving</span><span>98%</span></div><div class="progress-bar"><div class="progress-fill" data-target="98"></div></div></div>
-      <div class="skill-bar"><div class="skill-label"><span>System Architecture</span><span>90%</span></div><div class="progress-bar"><div class="progress-fill" data-target="90"></div></div></div>
-      <div class="skill-bar"><div class="skill-label"><span>Cross-functional Leadership</span><span>87%</span></div><div class="progress-bar"><div class="progress-fill" data-target="87"></div></div></div>
+    <div class="card-gta">
+      <h3>⚡ CORE POWERS</h3>
+      <div class="skill-bar"><div>Operations Design</div><div class="bar-bg"><div class="bar-fill" data-target="98"></div></div></div>
+      <div class="skill-bar"><div>Problem Solving</div><div class="bar-bg"><div class="bar-fill" data-target="99"></div></div></div>
+      <div class="skill-bar"><div>System Architecture</div><div class="bar-bg"><div class="bar-fill" data-target="92"></div></div></div>
+      <div class="skill-bar"><div>Leadership Heists</div><div class="bar-bg"><div class="bar-fill" data-target="89"></div></div></div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="container">
-  <div class="section-label">// COLLIDE WORLDS</div>
-  <div class="section-title">Let's Engineer The Next Big Thing</div>
+  <div class="section-title">[ COORDINATES ]</div>
   <div class="grid-2">
-    <div class="glass-card" style="padding: 32px;"><h3>📬 Direct Reach</h3><p style="margin:20px 0">aryan@automationarchitect.com</p><p>📍 India · Remote Ready</p><p>💼 linkedin.com/in/aryan-p</p><p>🐙 github.com/aryanbuilds</p></div>
-    <form id="contactForm" class="glass-card" style="padding: 32px;">
-      <input type="text" placeholder="Your name" required>
-      <input type="email" placeholder="Email" required>
-      <textarea rows="3" placeholder="Tell me about the challenge you want to solve..."></textarea>
-      <button type="submit" style="color:white;">Send Signal 🚀</button>
+    <div class="card-gta"><h3>📡 DROP A LINE</h3><p>aryan@viceautomation.com</p><p>📍 Los Santos · Remote Ready</p><p>💼 linkedin.com/in/aryan-gta</p><p>🐙 github.com/aryanheist</p></div>
+    <form id="contactForm" class="card-gta">
+      <input type="text" placeholder="CALLSIGN" required>
+      <input type="email" placeholder="ENCRYPTED EMAIL" required>
+      <textarea rows="3" placeholder="Describe your operation..."></textarea>
+      <button type="submit">SEND MESSAGE →</button>
       <div id="formFeedback" style="margin-top:12px;"></div>
     </form>
   </div>
 </section>
 
-<footer style="text-align:center; padding: 40px; border-top:1px solid rgba(59,130,246,0.2); color:#aaa;">✦ Aryan Parmar — AI-Assisted Portfolio | Every Problem Has a System Solution ✦</footer>
+<footer>★ GRAND THEFT AUTOMATION ★ | Aryan Parmar — System Architect | © VICE CITY EDITION</footer>
 
 <script>
-  // ========== AI ASSISTANT INTRO ==========
-  const assistantMsgDiv = document.getElementById('assistantMsg');
-  const assistantAvatar = document.getElementById('assistantAvatar');
-  let msgIndex = 0;
-  const assistantMessages = [
-    "🤖 Hey, I'm Echo — your digital guide. Let me introduce Aryan!",
-    "🚀 Aryan is an Operations Architect & Automation Builder.",
-    "⚙️ He designs systems that eliminate manual work & scale intelligence.",
-    "💡 Scroll down to explore his journey & signature projects!",
-    "✨ Click any project card to dive deeper. Need help? I'm here!"
-  ];
-  function cycleAssistantMessage() {
-    if (assistantMsgDiv) {
-      assistantMsgDiv.style.opacity = '0';
-      setTimeout(() => {
-        assistantMsgDiv.innerHTML = assistantMessages[msgIndex % assistantMessages.length];
-        assistantMsgDiv.style.opacity = '1';
-        msgIndex++;
-      }, 200);
-    }
+  // GTA CANVAS neon grid + particles
+  const canvas = document.getElementById('gtaCanvas');
+  const ctxCanvas = canvas.getContext('2d');
+  let width, height;
+  function resizeCanvas() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
   }
-  setInterval(cycleAssistantMessage, 5500);
-  assistantAvatar.addEventListener('click', () => {
-    assistantMsgDiv.innerHTML = "👋 I'm Echo! I showcase Aryan's world — builder, innovator, automation alchemist.";
-    setTimeout(() => { cycleAssistantMessage(); }, 3000);
-  });
-
-  // ========== TYPING ANIMATION ==========
-  const roles = ["I create solutions.", "I build systems.", "I automate futures.", "I engineer impact."];
-  let roleIdx = 0;
-  function typeRole() {
-    const span = document.getElementById('dynamicRole');
-    if(span) {
-      span.style.opacity = '0';
-      setTimeout(() => {
-        span.innerText = roles[roleIdx % roles.length];
-        span.style.opacity = '1';
-        roleIdx++;
-      }, 200);
-    }
-  }
-  setInterval(typeRole, 3200);
-  typeRole();
-
-  // ========== CANVAS BACKGROUND (Dynamic particles + glow) ==========
-  const bgCanvas = document.getElementById('canvas-bg');
-  const ctx = bgCanvas.getContext('2d');
-  let w, h;
-  function resizeCanvas() { w = window.innerWidth; h = window.innerHeight; bgCanvas.width = w; bgCanvas.height = h; }
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
-  let particles = [];
-  for(let i=0; i<140; i++) {
-    particles.push({
-      x: Math.random() * w, y: Math.random() * h, radius: Math.random() * 2.5 + 0.5,
-      vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
-      color: `hsl(${Math.random() * 60 + 200}, 70%, 65%)`
+  let particlesGTA = [];
+  for (let i = 0; i < 180; i++) {
+    particlesGTA.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      radius: Math.random() * 2 + 1,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+      color: `hsl(${Math.random() * 60 + 300}, 80%, 60%)`
     });
   }
-  function drawBg() {
-    if (!bgCanvas) return;
-    ctx.clearRect(0,0,w,h);
-    ctx.fillStyle = 'rgba(3,5,15,0.2)';
-    ctx.fillRect(0,0,w,h);
-    for(let p of particles) {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2);
-      ctx.fillStyle = p.color;
-      ctx.shadowBlur = 8;
-      ctx.shadowColor = "#3b82f6";
-      ctx.fill();
-      p.x += p.vx; p.y += p.vy;
-      if(p.x < -20) p.x = w+20; if(p.x > w+20) p.x = -20;
-      if(p.y < -20) p.y = h+20; if(p.y > h+20) p.y = -20;
-    }
-    requestAnimationFrame(drawBg);
-  }
-  drawBg();
 
-  // ========== PROJECT DATA (enhanced) ==========
-  const projects = [
-    { icon: "📊", title: "OneAndro Webinar Tracker", desc: "Automated attendance + engagement scoring across 200+ sessions, reduced manual work by 80%.", tags: ["Excel","Zoom API","Analytics"] },
-    { icon: "✅", title: "Soft Code Attendance AI", desc: "Smart anomaly detection & weekly summary generator for HR teams.", tags: ["Automation","System Design","AI"] },
-    { icon: "📹", title: "Zoom Tracking Automation", desc: "Extracts participation, latecomers, auto-reports & historical trends.", tags: ["API","Python","Reporting"] },
-    { icon: "🤖", title: "AI Receptionist System", desc: "NLP query routing + CRM logging — first-touch automation.", tags: ["AI","NLP","Automation"] },
-    { icon: "📈", title: "BI Dashboards Suite", desc: "Power BI real-time KPI dashboards for operations leadership.", tags: ["Power BI","SQL","Data Viz"] },
-    { icon: "⚡", title: "Automation Ecosystem", desc: "Bots, schedulers, cross-platform sync saving 30+ hrs/week.", tags: ["Workflow","Scripting","Zapier"] }
+  function drawGTABackground() {
+    if (!canvas) return;
+    ctxCanvas.fillStyle = '#05030c';
+    ctxCanvas.fillRect(0, 0, width, height);
+    // neon grid
+    ctxCanvas.strokeStyle = '#ff44cc30';
+    ctxCanvas.lineWidth = 1;
+    for (let i = 0; i < width; i += 70) {
+      ctxCanvas.beginPath();
+      ctxCanvas.moveTo(i, 0);
+      ctxCanvas.lineTo(i, height);
+      ctxCanvas.stroke();
+      ctxCanvas.beginPath();
+      ctxCanvas.moveTo(0, i % height);
+      ctxCanvas.lineTo(width, i % height);
+      ctxCanvas.stroke();
+    }
+    for (let p of particlesGTA) {
+      ctxCanvas.beginPath();
+      ctxCanvas.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctxCanvas.fillStyle = p.color;
+      ctxCanvas.shadowBlur = 10;
+      ctxCanvas.shadowColor = '#ff44aa';
+      ctxCanvas.fill();
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < -20) p.x = width + 20;
+      if (p.x > width + 20) p.x = -20;
+      if (p.y < -20) p.y = height + 20;
+      if (p.y > height + 20) p.y = -20;
+    }
+    requestAnimationFrame(drawGTABackground);
+  }
+  drawGTABackground();
+
+  // ROTATING TAGLINE
+  const words = ["I execute heists on inefficiency.", "I build automation empires.", "I crack operational chaos.", "I engineer system supremacy."];
+  let wordIndex = 0;
+  const dynamicSpan = document.getElementById('dynamicWord');
+  setInterval(() => {
+    if (dynamicSpan) {
+      dynamicSpan.style.opacity = '0';
+      setTimeout(() => {
+        wordIndex = (wordIndex + 1) % words.length;
+        dynamicSpan.innerText = words[wordIndex];
+        dynamicSpan.style.opacity = '1';
+      }, 200);
+    }
+  }, 3200);
+
+  // PROJECTS DATA (GTA theme)
+  const projectsData = [
+    { icon: "💣", title: "OneAndro Webinar Tracker", desc: "Automated attendance & engagement scoring. Eliminated 80% manual work. High-value target.", tags: ["Excel", "Zoom API", "Analytics"] },
+    { icon: "🔫", title: "Soft Code Attendance AI", desc: "Anomaly detection & weekly summary generator. Like a silent sniper.", tags: ["Automation", "AI", "HR Tech"] },
+    { icon: "📹", title: "Zoom Automation Heist", desc: "Extracts participants, latecomers, auto-reports. Steals back hours.", tags: ["API", "Python", "Reporting"] },
+    { icon: "🤖", title: "AI Receptionist Syndicate", desc: "NLP routing + CRM logging — first-contact automation.", tags: ["AI", "NLP", "Automation"] },
+    { icon: "📈", title: "BI Dashboards Empire", desc: "Real-time KPI dashboards for executive crime family.", tags: ["Power BI", "SQL", "Data Viz"] },
+    { icon: "⚡", title: "Automation Suite", desc: "Bots, schedulers, cross-platform sync — total control.", tags: ["Workflow", "Scripting", "Zapier"] }
   ];
-  const gridContainer = document.getElementById('projectsGrid');
-  projects.forEach((proj, idx) => {
+  const grid = document.getElementById('projectsGrid');
+  projectsData.forEach((proj, idx) => {
     const card = document.createElement('div');
-    card.className = 'project-card glass-card';
+    card.className = 'project-card card-gta';
     card.innerHTML = `
       <div class="project-icon">${proj.icon}</div>
-      <h3 style="font-size: 24px;">${proj.title}</h3>
-      <p style="color:#cbd5e6; margin:12px 0">${proj.desc}</p>
-      <div class="project-tags">${proj.tags.map(t => `<span>${t}</span>`).join('')}</div>
-      <div style="margin-top:16px; color:#60a5fa;">⟡ Explore →</div>
+      <h3 style="font-size:26px;">${proj.title}</h3>
+      <p style="color:#bbbbdd;">${proj.desc}</p>
+      <div>${proj.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+      <div style="margin-top:18px; color:#ff44cc;">▶ ACCESS FILE</div>
     `;
     card.addEventListener('click', () => {
-      const modalBody = document.getElementById('modalBody');
-      modalBody.innerHTML = `<h2 style="font-size:28px;">${proj.title}</h2><p style="margin:20px 0; line-height:1.6;">${proj.desc}</p><div class="project-tags">${proj.tags.map(t=>`<span>${t}</span>`).join('')}</div><p style="margin-top:20px;"><strong>Impact:</strong> Streamlined operations, saved thousands of manual hours, and improved accuracy by 95%.</p>`;
+      document.getElementById('modalBody').innerHTML = `<h2 style="color:#ff44cc;">${proj.title}</h2><p style="margin:20px 0;">${proj.desc}</p><div>${proj.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div><p style="margin-top:20px;"><strong>Impact:</strong> Eliminated 70% manual labor, increased accuracy by 95%, stolen hours returned to strategy.</p>`;
       document.getElementById('projectModal').classList.add('open');
     });
-    gridContainer.appendChild(card);
+    grid.appendChild(card);
   });
 
-  // modal close
-  document.getElementById('closeModalBtn')?.addEventListener('click', () => document.getElementById('projectModal').classList.remove('open'));
-  document.getElementById('projectModal')?.addEventListener('click', (e) => { if(e.target === document.getElementById('projectModal')) document.getElementById('projectModal').classList.remove('open'); });
+  // MODAL logic
+  const modal = document.getElementById('projectModal');
+  const closeModal = () => modal.classList.remove('open');
+  document.getElementById('closeModalBtn')?.addEventListener('click', closeModal);
+  modal?.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
-  // skill bars observer
-  const fillBars = document.querySelectorAll('.progress-fill');
-  const observer = new IntersectionObserver((entries) => {
+  // SKILL BARS OBSERVER
+  const fillers = document.querySelectorAll('.bar-fill');
+  const skillObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if(entry.isIntersecting) {
+      if (entry.isIntersecting) {
         const target = entry.target.getAttribute('data-target');
-        if(target) entry.target.style.width = target + '%';
+        if (target) entry.target.style.width = target + '%';
       }
     });
   }, { threshold: 0.5 });
-  fillBars.forEach(bar => observer.observe(bar));
+  fillers.forEach(bar => skillObserver.observe(bar));
 
-  // cursor custom
-  const cursor = document.getElementById('cursor'), follower = document.getElementById('follower');
+  // CURSOR
+  const cursor = document.getElementById('cursor');
+  const follower = document.getElementById('cursorFollower');
   let mx = 0, my = 0, fx = 0, fy = 0;
-  document.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; });
-  function followAnim() { fx += (mx-fx)*0.12; fy += (my-fy)*0.12; follower.style.left = fx+'px'; follower.style.top = fy+'px'; requestAnimationFrame(followAnim); }
-  followAnim();
-  const interactive = document.querySelectorAll('a, button, .project-card, .timeline-item');
-  interactive.forEach(el => { el.addEventListener('mouseenter', () => { cursor.style.width = '24px'; cursor.style.height = '24px'; follower.style.width = '56px'; follower.style.height = '56px'; }); el.addEventListener('mouseleave', () => { cursor.style.width = '10px'; cursor.style.height = '10px'; follower.style.width = '38px'; follower.style.height = '38px'; }); });
+  document.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
+  function animateCursor() { fx += (mx - fx) * 0.12; fy += (my - fy) * 0.12; follower.style.left = fx + 'px'; follower.style.top = fy + 'px'; requestAnimationFrame(animateCursor); }
+  animateCursor();
 
-  // nav scroll & mobile
-  window.addEventListener('scroll', () => { document.querySelector('nav').style.background = window.scrollY > 50 ? 'rgba(0,0,0,0.85)' : 'rgba(5,7,18,0.6)'; });
-  document.getElementById('mobileToggle').addEventListener('click', () => document.getElementById('mobileNav').classList.toggle('open'));
-  document.querySelectorAll('.mobile-nav a').forEach(link => link.addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open')));
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => anchor.addEventListener('click', function(e){ e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if(target) target.scrollIntoView({behavior:'smooth'}); }));
-
-  // contact form
-  const contactForm = document.getElementById('contactForm');
-  if(contactForm) contactForm.addEventListener('submit', (e) => { e.preventDefault(); document.getElementById('formFeedback').innerHTML = '✅ Message received! Echo will relay to Aryan.'; contactForm.reset(); setTimeout(()=>document.getElementById('formFeedback').innerHTML='',3000); });
-
-  // additional assistant interaction: intro message after load
-  window.addEventListener('load', () => {
-    setTimeout(() => { assistantMsgDiv.innerHTML = "✨ I'm Echo — swipe through projects, see Aryan's genius ✨"; }, 1000);
+  // HOVER EFFECTS
+  const interactives = document.querySelectorAll('a, button, .project-card, .card-gta');
+  interactives.forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.transform = 'rotate(90deg) scale(1.2)'; follower.style.width = '60px'; follower.style.height = '60px'; });
+    el.addEventListener('mouseleave', () => { cursor.style.transform = 'rotate(45deg) scale(1)'; follower.style.width = '45px'; follower.style.height = '45px'; });
   });
+
+  // NAVIGATION
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.remove('open')));
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // ASSISTANT INTERACTION
+  const assistantAvatar = document.getElementById('assistantAvatar');
+  const assistantBubble = document.getElementById('assistantMsg');
+  const gtaMessages = ["💀 Yo! Check Aryan's heists below.", "🔫 Automation is the ultimate weapon.", "🏆 He built systems that run themselves.", "💎 Click any project — see the loot."];
+  let msgIdx = 0;
+  setInterval(() => {
+    assistantBubble.style.opacity = '0';
+    setTimeout(() => {
+      assistantBubble.innerHTML = gtaMessages[msgIdx % gtaMessages.length];
+      assistantBubble.style.opacity = '1';
+      msgIdx++;
+    }, 200);
+  }, 5000);
+  assistantAvatar.addEventListener('click', () => {
+    assistantBubble.innerHTML = "🎮 I'm Lazlow — this architect rewrites the rules. Explore his world.";
+  });
+
+  // CONTACT FORM
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      document.getElementById('formFeedback').innerHTML = '✅ Signal sent! The crew will contact you.';
+      contactForm.reset();
+      setTimeout(() => document.getElementById('formFeedback').innerHTML = '', 3000);
+    });
+  }
+
+  // ADD MODAL CLOSE BUTTON DYNAMICALLY
+  const modalDiv = document.getElementById('projectModal');
+  if (!document.getElementById('closeModalBtn')) {
+    const closeBtn = document.createElement('button');
+    closeBtn.id = 'closeModalBtn';
+    closeBtn.innerText = '✕';
+    closeBtn.style.position = 'absolute';
+    closeBtn.style.top = '20px';
+    closeBtn.style.right = '20px';
+    closeBtn.style.background = '#ff44aa';
+    closeBtn.style.border = 'none';
+    closeBtn.style.borderRadius = '50%';
+    closeBtn.style.width = '36px';
+    closeBtn.style.cursor = 'pointer';
+    const modalContent = document.querySelector('.modal-content');
+    if (modalContent) modalContent.style.position = 'relative';
+    modalContent?.appendChild(closeBtn);
+    closeBtn.addEventListener('click', closeModal);
+  }
 </script>
 </body>
 </html>
